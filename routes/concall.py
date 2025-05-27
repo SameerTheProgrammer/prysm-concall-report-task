@@ -5,7 +5,7 @@ from utils.extractTextFromPdf import extract_text_from_pdf_url
 
 concall_router = APIRouter()
 
-@concall_router.get("/", tags=["get-reports-link"])
+@concall_router.get("/")
 def read_all_data():
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -25,7 +25,7 @@ def read_all_data():
     }
 
 # Fetch the last 2 earnings conference calls (concall) transcripts link for a given stock ticker, extract the relevant content from file link, and analyze it using an AI model to generate insights and a concise summary.
-@concall_router.get("/{ticker_name}", tags=["get-reports-link-by-ticker-name"])
+@concall_router.get("/{ticker_name}")
 def read_summary_of_concall_report_by_ticker(ticker_name: str):
     connection = get_db_connection()
     cursor = connection.cursor()
